@@ -34,9 +34,9 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="card-body">
-                <h3 className="card-title h5 mb-3">Personal Portfolio</h3>
-                <p>A fully responsive online portfolio built with HTML, CSS, and JavaScript.</p>
-                <a href="#" className="btn btn-primary">View Project</a>
+                <h3 className="card-title h5 mb-3">Architecture Company</h3>
+                <p>A showcase of architectural buildings made by a construction company.</p>
+                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function Portfolio() {
               <div className="kilo-body card-body">
                 <h3 className="card-title h5 mb-3">KiloEats App</h3>
                 <p>An interactive food delivery app with data visualizations, price displays, and real-time food options.</p>
-                <a href="#" className="btn btn-primary">View Project</a>
+                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Portfolio() {
               <div className="card-body">
                 <h3 className="card-title h5 mb-3">SkillBoost Mobile App (UI design)</h3>
                 <p>A modern learning platform with dynamic content loading and a clean skill sharing experience.</p>
-                <a href="#" className="btn btn-primary">View Project</a>
+                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
               </div>
             </div>
           </div>

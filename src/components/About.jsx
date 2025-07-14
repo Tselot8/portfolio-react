@@ -52,7 +52,6 @@ function About() {
                   <li><strong>HTML & CSS:</strong> Semantic markup, Flexbox, Grid systems, animations</li>
                   <li><strong>JavaScript & React:</strong> SPA, hooks, props/state, component-driven design</li>
                   <li><strong>Bootstrap & UI/UX:</strong> Fast prototyping, mobile-first design, layout systems</li>
-                  <li><strong>Web Optimization:</strong> SEO basics, performance tweaks, lazy loading</li>
                 </ul>
               </div>
             </div>
@@ -63,7 +62,7 @@ function About() {
             <div className="card h-100 about-card float-card" data-aos="zoom-in" data-aos-delay="200">
               <div className="card-body">
                 <h3 className="card-title h5">Experience</h3>
-                <p>I’ve spent the last two years working on various web projects—from simple portfolios to feature-rich applications. I’m familiar with solo and collaborative workflows, Git version control, and agile development.</p>
+                <p>I’ve spent the last two years working on various web projects—from simple portfolios to feature-rich applications. I’m familiar with solo and collaborative workflows and agile development.</p>
                 <p>Working across front-end and back-end stacks, I’ve sharpened my problem-solving abilities and gained hands-on experience with real-world development pipelines.</p>
               </div>
             </div>

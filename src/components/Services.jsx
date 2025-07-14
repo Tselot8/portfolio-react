@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Code2,
   LayoutDashboard,
-  Rocket,
+  Database,
   Smartphone,
   ShieldCheck,
 } from 'lucide-react';
@@ -39,15 +39,16 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Web Optimization */}
+          {/* SQL Knowledge */}
           <div className="col-md-4">
             <div className="glass-card h-100 p-4 rounded-4">
-              <Rocket size={40} className="text-white mb-3 svg-glow" />
-              <h3 className="h5 mb-3">Web Optimization</h3>
+              <Database size={40} className="text-white mb-3 svg-glow" />
+              <h3 className="h5 mb-3">SQL Knowledge</h3>
               <p className="text-white service-desc">
-                I audit and enhance websites for speed, responsiveness, and SEO.
-                I implement lazy loading, code splitting, and performance
-                metrics to improve discoverability and reduce bounce rates.
+                I understand the basics of SQL including writing simple queries, 
+                using SELECT, WHERE, JOIN, and organizing data with ORDER BY and 
+                GROUP BY. I can perform basic data manipulation and retrieval 
+                from relational databases.
               </p>
             </div>
           </div>

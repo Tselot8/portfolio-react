@@ -12,7 +12,7 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container">
-        <a className="navbar-brand" href="#home">Tselot</a>
+        <a className="navbar-brand" href="#home">Tselot Million</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -23,11 +23,6 @@ function Header() {
             <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
             <li className="nav-item"><a className="nav-link" href="#portfolio">Portfolio</a></li>
             <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-            <li className="nav-item">
-              <button onClick={toggleTheme} className="btn btn-outline-light">
-                {isDark ? '☀️ Light' : '🌙 Dark'}
-              </button>
-            </li>
           </ul>
         </div>
       </div>

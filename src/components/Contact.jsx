@@ -1,4 +1,9 @@
-export default  function Contact() {
+import { useState } from "react";
+
+export default function Contact() {
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState(""); // 'success' or 'error'
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -11,7 +16,7 @@ export default  function Contact() {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/send-message", {
+      const response = await fetch("https://portfolio-backend-production-aaa6.up.railway.app/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,16 +26,18 @@ export default  function Contact() {
 
       const result = await response.json();
       if (result.success) {
-        alert("Message sent to Telegram!");
+        setStatusMessage("✅ Message sent to Telegram!");
+        setStatusType("success");
+        e.target.reset();
       } else {
-        alert("Failed to send message.");
+        setStatusMessage("❌ Failed to send message.");
+        setStatusType("error");
       }
-      e.target.reset();
     } catch (err) {
-        console.error("Telegram API error:", err.response?.data || err.message);
-        res.status(500).json({ success: false, message: "Failed to send message." });
-      }
-
+      console.error("Telegram API error:", err);
+      setStatusMessage("⚠️ Something went wrong. Please try again later.");
+      setStatusType("error");
+    }
   };
 
   return (
@@ -54,6 +61,17 @@ export default  function Contact() {
               </div>
               <button type="submit" className="btn btn-primary">Send Message</button>
             </form>
+
+            {/* ✅ Status Message Display */}
+            {statusMessage && (
+              <div
+                className={`mt-3 fw-semibold ${
+                  statusType === "success" ? "text-success" : "text-danger"
+                }`}
+              >
+                {statusMessage}
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-4">
