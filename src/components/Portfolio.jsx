@@ -1,19 +1,29 @@
-import kiloEats1 from '../assets/kilo-eats-1.jpg';
-import kiloEats2 from '../assets/kilo-eats-2.jpg';
-import kiloEats3 from '../assets/kilo-eats-3.jpg';
+import { useState } from 'react';
+import kiloEats1 from '../assets/kiloeats-1.png';
+import kiloEats2 from '../assets/kiloeats-2.png';
+import kiloEats3 from '../assets/kiloeats-3.png';
 import skillBoost1 from '../assets/skill-boost-1.png';
 import skillBoost2 from '../assets/skill-boost-2.png';
 import skillBoost3 from '../assets/skill-boost-3.png';
 import skillBoost4 from '../assets/skill-boost-4.png';
-import arc1 from '../assets/arc-1.png';
-import arc2 from '../assets/arc-2.png';
-import arc3 from '../assets/arc-3.png';
+import arc1 from '../assets/arc-edit-1.png';
+import arc2 from '../assets/arc-edit-2.png';
+import arc3 from '../assets/arc-edit-3.png';
+import cvFile from '../assets/Tselot-Million-Negussie-Final.pdf';
 
 export default function Portfolio() {
+  const [showButton, setShowButton] = useState(true);
+
+  const handleButtonClick = () => {
+    setShowButton(false);
+    window.open('https://skillboost-app.vercel.app/', '_blank');
+  };
+
   return (
     <section id="portfolio" className="py-5">
       <div className="container text-center">
         <h2 className="display-4 fw-bold mb-5">Portfolio</h2>
+        <p>Open the following projects with a PC for a better experience.</p>
 
         {/* Top Row: Card 1 and Card 3 */}
         <div className="row justify-content-center g-4 mb-4">
@@ -34,9 +44,9 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="card-body">
-                <h3 className="card-title h5 mb-3">Architecture Company</h3>
+                <h3 className="card-title h5 mb-3">Project Nurtown - Architecture Company</h3>
                 <p>A showcase of architectural buildings made by a construction company.</p>
-                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
+                <a href="https://project-nurtown-xqgb.vercel.app/" className="btn btn-primary">View Project</a>
               </div>
             </div>
           </div>
@@ -58,9 +68,9 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="kilo-body card-body">
-                <h3 className="card-title h5 mb-3">KiloEats App</h3>
+                <h3 className="card-title h5 mb-3">KiloEats App (Restaurant's side)</h3>
                 <p>An interactive food delivery app with data visualizations, price displays, and real-time food options.</p>
-                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
+                <a href="https://kiloeats-frontend.vercel.app/" className="btn btn-primary">View Project</a>
               </div>
             </div>
           </div>
@@ -80,9 +90,16 @@ export default function Portfolio() {
               <div className="card-body">
                 <h3 className="card-title h5 mb-3">SkillBoost Mobile App (UI design)</h3>
                 <p>A modern learning platform with dynamic content loading and a clean skill sharing experience.</p>
-                {/*<a href="#" className="btn btn-primary">View Project</a>*/}
+                <a href="https://www.figma.com/design/kTZnZgR3yWSEuBHQVpWjAD/SkillBoost-figma-design?node-id=0-1&t=WXUAQ1D9Ga6B2w1Y-1" className="btn btn-primary">View Project</a>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="mt-5">
+          <div className="d-inline-flex align-items-center">
+            <span className="arrow left-arrow">&gt;</span>
+            <a href={cvFile} download="Tselot-Million-Negussie-CV.pdf" className="btn dl btn-primary mx-2">Download CV</a>
+            <span className="arrow right-arrow">&lt;</span>
           </div>
         </div>
       </div>

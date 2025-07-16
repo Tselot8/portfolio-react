@@ -7,7 +7,7 @@ export default function Hero() {
        <Header />
       <div className="container">
         <h1 className="display-3 fw-bold text-white mb-4">Web Dev & More</h1>
-        <p className="lead mb-5">Creative Web Developer Building Modern Solutions</p>
+        <p className="lead mb-5">Tselot Million - Creative Web Developer Building Modern Solutions</p>
         <a href="#contact" className="btn btn-primary btn-lg">Hire Me</a>
       </div>
     </section>

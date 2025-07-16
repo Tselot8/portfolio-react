@@ -32,8 +32,8 @@ export default function Services() {
               <LayoutDashboard size={40} className="text-white mb-3 svg-glow" />
               <h3 className="h5 mb-3">UI/UX Design</h3>
               <p className="text-white service-desc">
-                From wireframes to polished interfaces, I design with empathy —
-                ensuring accessibility, ease of use, and strong visual
+                From wireframes to polished interfaces, I design with empathy-ensuring 
+                accessibility, ease of use, and strong visual
                 hierarchy. I prioritize both form and function for real users.
               </p>
             </div>

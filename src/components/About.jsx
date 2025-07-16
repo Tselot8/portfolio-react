@@ -34,7 +34,7 @@ function About() {
 
               <p>Since joining the department, I’ve uncovered a deep love for programming. Despite being relatively new to coding, I’ve realized I have a natural talent for designing problem-solving algorithms. I find great joy in building systems that are both efficient and elegant.</p>
 
-              <p>My academic path has introduced me to multiple courses that shaped my understanding of computer science and software systems. These include core programming, algorithms, web development, and system architecture—empowering me to bring my ideas to life through technology.</p>
+              <p>My academic path has introduced me to multiple courses that shaped my understanding of computer science and software systems. These include core programming, algorithms, web development, and system architecture-empowering me to bring my ideas to life through technology.</p>
 
               <p>Outside of the classroom, I dedicate time to personal projects that test my creativity and push my technical boundaries. I’m always exploring ways to improve user experience through clean interfaces, intuitive designs, and accessible, high-performing code.</p>
             </div>
@@ -62,8 +62,8 @@ function About() {
             <div className="card h-100 about-card float-card" data-aos="zoom-in" data-aos-delay="200">
               <div className="card-body">
                 <h3 className="card-title h5">Experience</h3>
-                <p>I’ve spent the last two years working on various web projects—from simple portfolios to feature-rich applications. I’m familiar with solo and collaborative workflows and agile development.</p>
-                <p>Working across front-end and back-end stacks, I’ve sharpened my problem-solving abilities and gained hands-on experience with real-world development pipelines.</p>
+                <p>I’ve spent the last two years working on various web projects-from simple portfolios to feature-rich applications. I’m familiar with solo and collaborative workflows and agile development.</p>
+                <p>Working across front-end and back-end stacks, I’ve sharpened my problem-solving abilities and gained hands-on experience with real world development pipelines.</p>
               </div>
             </div>
           </div>
@@ -75,10 +75,10 @@ function About() {
                 <h3 className="card-title h5">Education</h3>
                 <p>I’m currently pursuing my Bachelor's in Software Engineering at Addis Ababa University. My education focuses on theoretical foundations and practical applications of software systems.</p>
                 <ul className="list-unstyled">
-                  <li>Data Structures & Algorithms</li>
-                  <li>Web & Mobile Development</li>
-                  <li>Object-Oriented Programming</li>
-                  <li>Database Systems & SQL</li>
+                  <li>- Data Structures & Algorithms</li>
+                  <li>- Web & Mobile Development</li>
+                  <li>- Object-Oriented Programming</li>
+                  <li>- Database Systems & SQL</li>
                 </ul>
               </div>
             </div>

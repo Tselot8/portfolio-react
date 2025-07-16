@@ -26,7 +26,7 @@ export default function Contact() {
 
       const result = await response.json();
       if (result.success) {
-        setStatusMessage("✅ Message sent to Telegram!");
+        setStatusMessage("✅ Your message has been sent to Tselot Million, Thank you!");
         setStatusType("success");
         e.target.reset();
       } else {
@@ -76,6 +76,10 @@ export default function Contact() {
         </div>
         <div className="mt-4">
           <p>Email: tselotmillion8@gmail.com | Phone: +251913819625</p>
+          <p>
+            GitHub: <a href="https://github.com/Tselot8" target="_blank" rel="noopener noreferrer">My Github account</a> | 
+            LinkedIn: <a href="https://www.linkedin.com/in/tselot-million-654093309/" target="_blank" rel="noopener noreferrer">My linkedin account</a>
+          </p>
         </div>
       </div>
     </section>
