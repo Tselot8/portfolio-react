@@ -95,6 +95,14 @@ function About() {
             </div>
           </div>
         </div>
+      </div><br></br>
+      <div className="d-flex justify-content-center align-items-center">
+        <a
+          href="https://drive.google.com/file/d/1Imb1JZzPOBF666TTSfAJiIjuwH4R38YS/view?usp=sharing"
+          className="btn btn-primary"
+        >
+          Watch my pitch
+        </a>
       </div>
     </section>
   );
