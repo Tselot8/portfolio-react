@@ -16,7 +16,7 @@ export default function Contact() {
     };
 
     try {
-      const response = await fetch("https://portfolio-backend-production-aaa6.up.railway.app/send-message", {
+      const response = await fetch("https://portfolio-backend-qhoq.onrender.com/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
