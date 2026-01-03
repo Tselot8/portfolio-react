@@ -2,10 +2,14 @@ import { useState } from "react";
 
 export default function Contact() {
   const [statusMessage, setStatusMessage] = useState("");
-  const [statusType, setStatusType] = useState(""); // 'success' or 'error'
+  const [statusType, setStatusType] = useState(""); 
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setStatusMessage("");
+
     const formData = new FormData(e.target);
 
     const payload = {
@@ -16,17 +20,19 @@ export default function Contact() {
     };
 
     try {
-      const response = await fetch("https://portfolio-backend-qhoq.onrender.com/send-message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://portfolio-backend-qhoq.onrender.com/send-message",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const result = await response.json();
+
       if (result.success) {
-        setStatusMessage("✅ Your message has been sent to Tselot Million, Thank you!");
+        setStatusMessage("✅ Your message has been sent to Tselot Million, thank you!");
         setStatusType("success");
         e.target.reset();
       } else {
@@ -37,8 +43,11 @@ export default function Contact() {
       console.error("Telegram API error:", err);
       setStatusMessage("⚠️ Something went wrong. Please try again later.");
       setStatusType("error");
+    } finally {
+      setIsLoading(false);
     }
   };
+
 
   return (
     <section id="contact" className="py-5 bg-dark-grey">
@@ -59,9 +68,22 @@ export default function Contact() {
               <div className="mb-3">
                 <textarea className="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
               </div>
-              <button type="submit" className="btn btn-primary">Send Message</button>
+              <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2"></span>
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
+              </button>
             </form>
-
+            {isLoading && (
+              <div className="mt-3 text-info fw-semibold">
+                Sending your message, please wait...
+              </div>
+            )}
             {/* ✅ Status Message Display */}
             {statusMessage && (
               <div

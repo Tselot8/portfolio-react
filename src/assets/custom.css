@@ -39,6 +39,7 @@ body {
 .btn-primary {
   background-color: var(--primary-purple);
   border-color: var(--primary-purple);
+  color: black;
 }
 
 .btn-primary:hover {

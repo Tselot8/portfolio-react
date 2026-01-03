@@ -6,10 +6,11 @@ import skillBoost1 from '../assets/skill-boost-1.png';
 import skillBoost2 from '../assets/skill-boost-2.png';
 import skillBoost3 from '../assets/skill-boost-3.png';
 import skillBoost4 from '../assets/skill-boost-4.png';
+import Project_alx_demo from '../assets/Project_alx_demo.mp4';
 import arc1 from '../assets/arc-edit-1.png';
 import arc2 from '../assets/arc-edit-2.png';
 import arc3 from '../assets/arc-edit-3.png';
-import cvFile from '../assets/Tselot-Million-Negussie-Final.pdf';
+import cvFile from '../assets/TMN CV.pdf';
 
 export default function Portfolio() {
   const [showButton, setShowButton] = useState(true);
@@ -91,6 +92,30 @@ export default function Portfolio() {
                 <h3 className="card-title h5 mb-3">SkillBoost Mobile App (UI design)</h3>
                 <p>A modern learning platform with dynamic content loading and a clean skill sharing experience.</p>
                 <a href="https://www.figma.com/design/kTZnZgR3yWSEuBHQVpWjAD/SkillBoost-figma-design?node-id=0-1&t=WXUAQ1D9Ga6B2w1Y-1" className="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Centered Card: Card 2 */}
+        <div className="row justify-content-center g-4 mt-1">
+          <div className="col-md-8">
+            <div className="card glass-card glow-card h-100 short-card">
+              <div className="p-3">
+                <div className="d-flex justify-content-center gap-3 flex-wrap">
+                  <video
+                    src={Project_alx_demo}
+                    controls
+                    className="ui rounded"
+                    style={{ width: "100%", maxHeight: "300px" }}
+                  />
+                </div>
+              </div>
+              <div className="card-body">
+                <h3 className="card-title h5 mb-3">Polling/Voting App (Backend)</h3>
+                <p>Here's a short demo of my Django-based backend system that supports creating polls, managing questions 
+                  and choices, and securely recording user votes.</p>
+                <a href="https://github.com/Tselot8/alx-project-nexus.git" className="btn btn-primary">View Github Repo</a>
               </div>
             </div>
           </div>
