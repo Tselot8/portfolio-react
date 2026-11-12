@@ -2,16 +2,18 @@ import { useState } from "react";
 
 export default function Contact() {
   const [statusMessage, setStatusMessage] = useState("");
-  const [statusType, setStatusType] = useState(""); 
+  const [statusType, setStatusType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isLoading) return;
+
+    const form = e.currentTarget;
     setIsLoading(true);
     setStatusMessage("");
 
-    const formData = new FormData(e.target);
-
+    const formData = new FormData(form);
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -28,13 +30,12 @@ export default function Contact() {
           body: JSON.stringify(payload),
         }
       );
-
       const result = await response.json();
 
-      if (result.success) {
+      if (response.ok && result.success) {
         setStatusMessage("✅ Your message has been sent to Tselot Million, thank you!");
         setStatusType("success");
-        e.target.reset();
+        form.reset();
       } else {
         setStatusMessage("❌ Failed to send message.");
         setStatusType("error");
@@ -48,60 +49,74 @@ export default function Contact() {
     }
   };
 
-
   return (
-    <section id="contact" className="py-5 bg-dark-grey">
-      <div className="container text-center">
-        <h2 className="display-4 fw-bold mb-5">Contact Me</h2>
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <input type="text" className="form-control" name="name" placeholder="Your Name" required />
-              </div>
-              <div className="mb-3">
-                <input type="email" className="form-control" name="email" placeholder="Your Email" required />
-              </div>
-              <div className="mb-3">
-                <input type="text" className="form-control" name="subject" placeholder="Subject" required />
-              </div>
-              <div className="mb-3">
-                <textarea className="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2"></span>
-                    Sending...
-                  </>
-                ) : (
-                  "Send Message"
-                )}
-              </button>
-            </form>
-            {isLoading && (
-              <div className="mt-3 text-info fw-semibold">
-                Sending your message, please wait...
-              </div>
-            )}
-            {/* ✅ Status Message Display */}
-            {statusMessage && (
-              <div
-                className={`mt-3 fw-semibold ${
-                  statusType === "success" ? "text-success" : "text-danger"
-                }`}
-              >
-                {statusMessage}
-              </div>
-            )}
+    <section id="contact" className="signal-contact">
+      <div className="container signal-contact-layout">
+        <div className="signal-contact-copy">
+          <div className="signal-section-heading">
+            <span className="signal-section-index" aria-hidden="true">05 / CONTACT</span>
+            <span className="signal-rule" aria-hidden="true" />
+            <h2 className="signal-section-title">Contact Me</h2>
+          </div>
+
+          <div className="signal-contact-details">
+            <p><span className="signal-contact-label">Email:</span> tselotmillion8@gmail.com</p>
+            <p><span className="signal-contact-label">Phone:</span> +251913819625</p>
+          </div>
+          <div className="signal-contact-socials">
+            <p>
+              <span className="signal-contact-label">GitHub:</span>
+              <a href="https://github.com/Tselot8" target="_blank" rel="noopener noreferrer">
+                My Github account <span aria-hidden="true">&#8599;</span>
+              </a>
+            </p>
+            <p>
+              <span className="signal-contact-label">LinkedIn:</span>
+              <a href="https://www.linkedin.com/in/tselot-million-654093309/" target="_blank" rel="noopener noreferrer">
+                My linkedin account <span aria-hidden="true">&#8599;</span>
+              </a>
+            </p>
           </div>
         </div>
-        <div className="mt-4">
-          <p>Email: tselotmillion8@gmail.com | Phone: +251913819625</p>
-          <p>
-            GitHub: <a href="https://github.com/Tselot8" target="_blank" rel="noopener noreferrer">My Github account</a> | 
-            LinkedIn: <a href="https://www.linkedin.com/in/tselot-million-654093309/" target="_blank" rel="noopener noreferrer">My linkedin account</a>
-          </p>
+
+        <div className="signal-contact-form-panel">
+          <form className="signal-contact-form" onSubmit={handleSubmit} aria-busy={isLoading} aria-describedby="contact-feedback">
+            <div className="signal-form-row">
+              <div className="signal-field">
+                <label htmlFor="contact-name">Your Name</label>
+                <input id="contact-name" type="text" name="name" placeholder="Your Name" autoComplete="name" required />
+              </div>
+              <div className="signal-field">
+                <label htmlFor="contact-email">Your Email</label>
+                <input id="contact-email" type="email" name="email" placeholder="Your Email" autoComplete="email" required />
+              </div>
+            </div>
+            <div className="signal-field">
+              <label htmlFor="contact-subject">Subject</label>
+              <input id="contact-subject" type="text" name="subject" placeholder="Subject" required />
+            </div>
+            <div className="signal-field">
+              <label htmlFor="contact-message">Your Message</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Your Message" required />
+            </div>
+            <button type="submit" className="signal-submit" disabled={isLoading}>
+              {isLoading ? (
+                <><span className="signal-send-spinner" aria-hidden="true" />Sending...</>
+              ) : (
+                <>Send Message <span className="signal-submit-arrow" aria-hidden="true">&#8599;</span></>
+              )}
+            </button>
+          </form>
+
+          <div
+            id="contact-feedback"
+            className={`signal-contact-feedback${isLoading ? ' is-loading' : statusMessage ? ` is-${statusType}` : ''}`}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {isLoading ? "Sending your message, please wait..." : statusMessage}
+          </div>
         </div>
       </div>
     </section>

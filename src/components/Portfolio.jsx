@@ -2,7 +2,6 @@ import { useState } from 'react';
 import kiloEats1 from '../assets/kiloeats-1.png';
 import kiloEats2 from '../assets/kiloeats-2.png';
 import kiloEats3 from '../assets/kiloeats-3.png';
-import skillBoost1 from '../assets/skill-boost-1.png';
 import skillBoost2 from '../assets/skill-boost-2.png';
 import skillBoost3 from '../assets/skill-boost-3.png';
 import skillBoost4 from '../assets/skill-boost-4.png';
@@ -12,120 +11,136 @@ import arc2 from '../assets/arc-edit-2.png';
 import arc3 from '../assets/arc-edit-3.png';
 import cvFile from '../assets/TMN CV.pdf';
 
-export default function Portfolio() {
-  const [showButton, setShowButton] = useState(true);
+const projects = [
+  {
+    id: 'nurtown',
+    title: 'Project Nurtown - Architecture Company',
+    description: 'A showcase of architectural buildings made by a construction company.',
+    href: 'https://project-nurtown-xqgb.vercel.app/',
+    images: [
+      { src: arc1, label: 'Home page', width: 1886, height: 1002 },
+      { src: arc2, label: 'About and objectives', width: 1884, height: 1002 },
+      { src: arc3, label: 'Projects and contact', width: 1887, height: 1000 },
+    ],
+  },
+  {
+    id: 'kiloeats',
+    title: "KiloEats App (Restaurant's side)",
+    description: 'An interactive food delivery app with data visualizations, price displays, and real-time food options.',
+    href: 'https://kiloeats-frontend.vercel.app/',
+    images: [
+      { src: kiloEats1, label: 'Add new food', width: 1887, height: 998 },
+      { src: kiloEats2, label: 'Edit your menu', width: 1885, height: 1003 },
+      { src: kiloEats3, label: 'Restaurant profile', width: 1908, height: 1003 },
+    ],
+  },
+  {
+    id: 'skillboost',
+    title: 'SkillBoost Mobile App (UI design)',
+    description: 'A modern learning platform with dynamic content loading and a clean skill sharing experience.',
+    href: 'https://www.figma.com/design/kTZnZgR3yWSEuBHQVpWjAD/SkillBoost-figma-design?node-id=0-1&t=WXUAQ1D9Ga6B2w1Y-1',
+    portrait: true,
+    images: [
+      { src: skillBoost4, label: 'Creator profile', width: 386, height: 872 },
+      { src: skillBoost2, label: 'Learning dashboard', width: 377, height: 841 },
+      { src: skillBoost3, label: 'Course overview', width: 393, height: 879 },
+    ],
+  },
+  {
+    id: 'polling',
+    title: 'Polling/Voting App (Backend)',
+    description: "Here's a short demo of my Django-based backend system that supports creating polls, managing questions and choices, and securely recording user votes.",
+    href: 'https://github.com/Tselot8/alx-project-nexus.git',
+    video: Project_alx_demo,
+    linkText: 'View Github Repo',
+  },
+];
 
-  const handleButtonClick = () => {
-    setShowButton(false);
-    window.open('https://skillboost-app.vercel.app/', '_blank');
-  };
+function ProjectContactSheet({ project }) {
+  const [selected, setSelected] = useState(0);
+  const image = project.images[selected];
+  const previewId = `project-preview-${project.id}`;
 
   return (
-    <section id="portfolio" className="py-5">
-      <div className="container text-center">
-        <h2 className="display-4 fw-bold mb-5">Portfolio</h2>
-        <p>Open the following projects with a PC for a better experience.</p>
+    <>
+      <div className="signal-project-preview" id={previewId}>
+        <img src={image.src} alt={`${project.title}: ${image.label}`} width={image.width} height={image.height} loading="lazy" decoding="async" />
+      </div>
+      <div className="signal-project-thumbs" role="group" aria-label={`${project.title} screenshots`}>
+        {project.images.map((thumbnail, index) => (
+          <button
+            key={thumbnail.src}
+            type="button"
+            className="signal-project-thumb"
+            aria-label={`Show ${thumbnail.label.toLowerCase()} for ${project.title}, screenshot ${index + 1} of ${project.images.length}`}
+            aria-pressed={selected === index}
+            aria-controls={previewId}
+            onClick={() => setSelected(index)}
+          >
+            <img src={thumbnail.src} alt="" width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          </button>
+        ))}
+      </div>
+      <p className="signal-preview-caption" aria-live="polite" aria-atomic="true">
+        <span className="visually-hidden">Preview </span>
+        <span className="signal-preview-count">{String(selected + 1).padStart(2, '0')} / {String(project.images.length).padStart(2, '0')}</span>
+        <span>{image.label}</span>
+      </p>
+    </>
+  );
+}
 
-        {/* Top Row: Card 1 and Card 3 */}
-        <div className="row justify-content-center g-4 mb-4">
-          {/* Card 1 */}
-          <div className="col-md-5">
-            <div className="card glass-card glow-card h-100 short-card">
-              <div className="p-3">
-                <div className="row g-2">
-                  <div className="col-6">
-                    <img src={arc1} className="img-fluid rounded" alt="Project 1a" />
-                  </div>
-                  <div className="col-6">
-                    <img src={arc2} className="img-fluid rounded" alt="Project 1b" />
-                  </div>
-                  <div className="col-12">
-                    <img src={arc3} className="img-fluid rounded mt-2" alt="Project 1c" />
-                  </div>
-                </div>
-              </div>
-              <div className="card-body">
-                <h3 className="card-title h5 mb-3">Project Nurtown - Architecture Company</h3>
-                <p>A showcase of architectural buildings made by a construction company.</p>
-                <a href="https://project-nurtown-xqgb.vercel.app/" className="btn btn-primary">View Project</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="col-md-5">
-            <div className="card glass-card glow-card h-100 short-card">
-              <div className="p-3">
-                <div className="row g-2">
-                  <div className="col-6">
-                    <img src={kiloEats1} className="kilo1" alt="Project 3a" />
-                  </div>
-                  <div className="col-6">
-                    <img src={kiloEats2} className="kilo1" alt="Project 3b" />
-                  </div>
-                  <div className="col-12">
-                    <img src={kiloEats3} className="kilo3" alt="Project 3c" />
-                  </div>
-                </div>
-              </div>
-              <div className="kilo-body card-body">
-                <h3 className="card-title h5 mb-3">KiloEats App (Restaurant's side)</h3>
-                <p>An interactive food delivery app with data visualizations, price displays, and real-time food options.</p>
-                <a href="https://kiloeats-frontend.vercel.app/" className="btn btn-primary">View Project</a>
-              </div>
-            </div>
-          </div>
+export default function Portfolio() {
+  return (
+    <section id="portfolio" className="signal-portfolio">
+      <div className="container">
+        <div className="signal-section-heading">
+          <span className="signal-section-index" aria-hidden="true">04 / WORK</span>
+          <span className="signal-rule" aria-hidden="true" />
+          <h2 className="signal-section-title">Portfolio</h2>
         </div>
+        <p className="signal-portfolio-intro">Open the following projects with a PC for a better experience.</p>
 
-        {/* Bottom Centered Card: Card 2 */}
-        <div className="row justify-content-center g-4">
-          <div className="col-md-8">
-            <div className="card glass-card glow-card h-100 short-card">
-              <div className="p-3">
-                <div className="d-flex justify-content-center gap-3 flex-wrap">
-                  <img src={skillBoost4} className="ui rounded" alt="Project 2b" />
-                  <img src={skillBoost2} className="ui rounded" alt="Project 2c" />
-                  <img src={skillBoost3} className="ui rounded" alt="Project 2d" />
-                </div>
-              </div>
-              <div className="card-body">
-                <h3 className="card-title h5 mb-3">SkillBoost Mobile App (UI design)</h3>
-                <p>A modern learning platform with dynamic content loading and a clean skill sharing experience.</p>
-                <a href="https://www.figma.com/design/kTZnZgR3yWSEuBHQVpWjAD/SkillBoost-figma-design?node-id=0-1&t=WXUAQ1D9Ga6B2w1Y-1" className="btn btn-primary">View Project</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="signal-project-list">
+          {projects.map((project, index) => (
+            <article className="signal-project" key={project.id} aria-labelledby={`portfolio-${project.id}`}>
+              <header className="signal-project-heading">
+                <span className="signal-project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')} /</span>
+                <h3 id={`portfolio-${project.id}`}>{project.title}</h3>
+              </header>
 
-        {/* Bottom Centered Card: Card 2 */}
-        <div className="row justify-content-center g-4 mt-1">
-          <div className="col-md-8">
-            <div className="card glass-card glow-card h-100 short-card">
-              <div className="p-3">
-                <div className="d-flex justify-content-center gap-3 flex-wrap">
+              <div className={`signal-project-media${project.portrait ? ' signal-project-media--phone' : ''}`}>
+                {project.video ? (
                   <video
-                    src={Project_alx_demo}
+                    src={project.video}
                     controls
-                    className="ui rounded"
-                    style={{ width: "100%", maxHeight: "300px" }}
+                    preload="none"
+                    playsInline
+                    className="signal-project-video"
+                    aria-label="Polling/Voting App (Backend) demo"
                   />
-                </div>
+                ) : (
+                  <ProjectContactSheet project={project} />
+                )}
               </div>
-              <div className="card-body">
-                <h3 className="card-title h5 mb-3">Polling/Voting App (Backend)</h3>
-                <p>Here's a short demo of my Django-based backend system that supports creating polls, managing questions 
-                  and choices, and securely recording user votes.</p>
-                <a href="https://github.com/Tselot8/alx-project-nexus.git" className="btn btn-primary">View Github Repo</a>
+
+              <div className="signal-project-description">
+                <p>{project.description}</p>
+                <a href={project.href} className="signal-project-link">
+                  {project.linkText || 'View Project'} <span aria-hidden="true">&#8599;</span>
+                </a>
               </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
-        <div className="mt-5">
-          <div className="d-inline-flex align-items-center">
-            <span className="arrow left-arrow">&gt;</span>
-            <a href={cvFile} download="Tselot-Million-Negussie-CV.pdf" className="btn dl btn-primary mx-2">Download CV</a>
-            <span className="arrow right-arrow">&lt;</span>
-          </div>
+
+        <div className="signal-portfolio-cv">
+          <span className="signal-cv-label" aria-hidden="true">CV / PDF</span>
+          <span className="signal-rule" aria-hidden="true" />
+          <a href={cvFile} download="Tselot-Million-Negussie-CV.pdf" className="signal-download">
+            Download CV <span aria-hidden="true">&#8595;</span>
+          </a>
         </div>
       </div>
     </section>
