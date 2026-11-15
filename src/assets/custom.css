@@ -1153,14 +1153,6 @@ h2 {
   font-family: var(--signal-font-accent);
 }
 
-.signal-project-video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 8 / 5;
-  object-fit: contain;
-  background: var(--signal-ink);
-}
-
 .signal-project-description {
   grid-area: description;
   min-width: 0;
@@ -1171,6 +1163,24 @@ h2 {
   color: var(--signal-muted);
   font-size: var(--signal-type-lead);
   line-height: 1.75;
+}
+
+.signal-project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--signal-space-2);
+  margin: 0 0 var(--signal-space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.signal-project-technologies li {
+  max-width: 100%;
+  padding: var(--signal-space-1) var(--signal-space-2);
+  border: 1px solid var(--signal-border);
+  color: var(--signal-muted);
+  font-size: var(--signal-type-small);
+  line-height: 1.6;
 }
 
 .signal-portfolio .signal-project-link {
@@ -1191,8 +1201,7 @@ h2 {
 }
 
 .signal-portfolio a:focus-visible,
-.signal-portfolio button:focus-visible,
-.signal-portfolio video:focus-visible {
+.signal-portfolio button:focus-visible {
   outline: 3px solid var(--signal-teal);
   outline-offset: 5px;
   border-radius: var(--signal-space-1);

@@ -5,22 +5,24 @@ import kiloEats3 from '../assets/kiloeats-3.png';
 import skillBoost2 from '../assets/skill-boost-2.png';
 import skillBoost3 from '../assets/skill-boost-3.png';
 import skillBoost4 from '../assets/skill-boost-4.png';
-import Project_alx_demo from '../assets/Project_alx_demo.mp4';
-import arc1 from '../assets/arc-edit-1.png';
-import arc2 from '../assets/arc-edit-2.png';
-import arc3 from '../assets/arc-edit-3.png';
+import nexusDiscover from '../assets/nexus-discover.jpg';
+import nexusVoting from '../assets/nexus-voting.jpg';
+import nexusResults from '../assets/nexus-results.jpg';
 import cvFile from '../assets/TMN CV.pdf';
 
 const projects = [
   {
-    id: 'nurtown',
-    title: 'Project Nurtown - Architecture Company',
-    description: 'A showcase of architectural buildings made by a construction company.',
-    href: 'https://project-nurtown-xqgb.vercel.app/',
+    id: 'nexus',
+    title: 'Project Nexus',
+    description: 'Project Nexus is a full-stack polling platform built with React and Django, allowing users to create, manage, and participate in public and private polls. It features secure authentication, customizable voting options, real-time results, and interactive analytics, with PostgreSQL for data storage.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'Docker', 'Render', 'Neon', 'GitHub Actions'],
+    liveHref: 'https://project-nexus-staging.onrender.com/',
+    href: 'https://github.com/Tselot8/alx-project-nexus',
+    linkText: 'View GitHub Repo',
     images: [
-      { src: arc1, label: 'Home page', width: 1886, height: 1002 },
-      { src: arc2, label: 'About and objectives', width: 1884, height: 1002 },
-      { src: arc3, label: 'Projects and contact', width: 1887, height: 1000 },
+      { src: nexusDiscover, label: 'Discover', alt: 'Project Nexus Discover page with public poll search and category, status, and sort filters.', width: 1280, height: 662 },
+      { src: nexusVoting, label: 'Voting', alt: 'Project Nexus public poll cards showing questions, categories, poll types, and voting links.', width: 1280, height: 664 },
+      { src: nexusResults, label: 'Results', alt: 'Project Nexus poll results showing participant and selection counts with percentage bar charts.', width: 1280, height: 662 },
     ],
   },
   {
@@ -46,14 +48,6 @@ const projects = [
       { src: skillBoost3, label: 'Course overview', width: 393, height: 879 },
     ],
   },
-  {
-    id: 'polling',
-    title: 'Polling/Voting App (Backend)',
-    description: "Here's a short demo of my Django-based backend system that supports creating polls, managing questions and choices, and securely recording user votes.",
-    href: 'https://github.com/Tselot8/alx-project-nexus.git',
-    video: Project_alx_demo,
-    linkText: 'View Github Repo',
-  },
 ];
 
 function ProjectContactSheet({ project }) {
@@ -64,7 +58,7 @@ function ProjectContactSheet({ project }) {
   return (
     <>
       <div className="signal-project-preview" id={previewId}>
-        <img src={image.src} alt={`${project.title}: ${image.label}`} width={image.width} height={image.height} loading="lazy" decoding="async" />
+        <img src={image.src} alt={image.alt || `${project.title}: ${image.label}`} width={image.width} height={image.height} loading="lazy" decoding="async" />
       </div>
       <div className="signal-project-thumbs" role="group" aria-label={`${project.title} screenshots`}>
         {project.images.map((thumbnail, index) => (
@@ -111,25 +105,26 @@ export default function Portfolio() {
               </header>
 
               <div className={`signal-project-media${project.portrait ? ' signal-project-media--phone' : ''}`}>
-                {project.video ? (
-                  <video
-                    src={project.video}
-                    controls
-                    preload="none"
-                    playsInline
-                    className="signal-project-video"
-                    aria-label="Polling/Voting App (Backend) demo"
-                  />
-                ) : (
-                  <ProjectContactSheet project={project} />
-                )}
+                <ProjectContactSheet project={project} />
               </div>
 
               <div className="signal-project-description">
                 <p>{project.description}</p>
-                <a href={project.href} className="signal-project-link">
-                  {project.linkText || 'View Project'} <span aria-hidden="true">&#8599;</span>
-                </a>
+                {project.technologies && (
+                  <ul className="signal-project-technologies" aria-label={`${project.title} technologies`}>
+                    {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+                  </ul>
+                )}
+                <div className="d-flex flex-column align-items-start">
+                  {project.liveHref && (
+                    <a href={project.liveHref} className="signal-project-link">
+                      View Live Website <span aria-hidden="true">&#8599;</span>
+                    </a>
+                  )}
+                  <a href={project.href} className="signal-project-link">
+                    {project.linkText || 'View Project'} <span aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
               </div>
             </article>
           ))}
